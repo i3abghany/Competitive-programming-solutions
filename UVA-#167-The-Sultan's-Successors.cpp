@@ -37,7 +37,6 @@ int main() {
         }
         res = 0;
         solve(0, 0);
-        cout << res;
-        if(n) cout << endl;
+        cout << setw(5) << res << endl;
     }
 }
