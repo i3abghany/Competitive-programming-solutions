@@ -7,6 +7,10 @@ using namespace std;
 int main() {
     string x, y;
     while(cin >> x) {
+        if(x == "0" || y == "0") {
+            cout << 0 << endl;
+            continue;
+        }
         cin >> y;
         reverse(x.begin(), x.end());
         reverse(y.begin(), y.end());
