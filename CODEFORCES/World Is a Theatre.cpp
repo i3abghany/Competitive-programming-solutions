@@ -15,7 +15,7 @@ void nCr(int n, int r)
                 C[i][k] = (C[i-1][k-1] + C[i-1][k]);
     }
 }
-
+ 
 int main() {
 	long long n, m, t;
 	cin >> n >> m >> t;
