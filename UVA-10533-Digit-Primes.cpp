@@ -22,7 +22,6 @@ void PrimeDigit() {
         } else comu[i] = comu[i - 1];
     }
 }
-
     void seive() {
     arr[0] = 1;
     arr[1] = 1;
