@@ -9,7 +9,7 @@ bool can_be_placed(int r, int c) {
     if(!col[c] && !dL[r+c] && !dR[r-c+7]) return true;
     return false;
 }
-
+ 
 void solve(int r, int s) {
     if(r == 8) {
         res = max(res, s);
