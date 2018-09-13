@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-using namespace std;
+using namespace std; 
 
 int row[8], a, b, n, L;
 
