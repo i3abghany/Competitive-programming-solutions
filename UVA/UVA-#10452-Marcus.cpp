@@ -5,7 +5,7 @@ using namespace std;
 
 const int N = 10;
 int TT, n, m;
-
+ 
 char grid[N][N];
 
 int p[10];
