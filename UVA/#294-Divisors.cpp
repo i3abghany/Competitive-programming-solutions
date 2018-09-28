@@ -12,7 +12,7 @@ long long int g(int x) {
 	if(i*i == x) cnt++;
 	return cnt;
 }
-
+ 
 int main() {
 	long long int U, L, TC;
 	cin >> TC;
