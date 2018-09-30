@@ -19,7 +19,7 @@ int main() {
         for(int i = 0; i < x; i++) {
             for(int j = 0; j < x; j++) {
                 if(i == j) f[i][j] = 0;
-                else f[i][j] = t[i][j] = 1LL << 60;
+                else f[i][j] = t[i][j] = OO;
             }
         }
 //        for(int i = 0; i < x; i++)
@@ -47,7 +47,7 @@ int main() {
         for(int i = 0; i < q; i++) {
             cin >> T1 >> T2;
 //            T1--; T2--;
-            if(f[T1 - 1][T2 - 1] != 1LL<<60)
+            if(f[T1 - 1][T2 - 1] != OO)
                 printf("Distance and time to reach destination is %lld & %lld.\n", f[T1 - 1][T2 - 1], t[T1 - 1][T2 - 1]);
             else printf("No Path.\n");
         }
