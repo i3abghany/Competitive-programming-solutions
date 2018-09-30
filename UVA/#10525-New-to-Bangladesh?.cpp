@@ -3,7 +3,7 @@
 using namespace std;
 
 const int N = 150;
-const long long int OO = (int)1e12;
+const long long int OO = 1e12;
 
 long long int f[N][N];
 long long int t[N][N];
@@ -57,7 +57,8 @@ int main() {
         cin >> q;
         while(q--) {
             cin >> T1 >> T2;
-            if(f[T1 - 1][T2 - 1] != OO)
+            if(T1 == T2) cout << "Distance and time to reach destination is 0 & 0.\n";            
+            else if(f[T1 - 1][T2 - 1] != OO)
                 cout << "Distance and time to reach destination is " << f[T1-1][T2-1] << " & " << t[T1-1][T2-1] << ".\n";
             else cout << "No path.\n";
         }
