@@ -18,7 +18,7 @@ bool valid(int r, int c) {
 int solve(int r, int c) {
     if(grid[r][c] == 'x') return 0;
     if(!valid(r, c)) {
-//        cout << r << " " << c << " are not valid " << endl;
+//        cout << r << " " << c << " are not valid" << endl;
         return 0;
     }
     if(r == n - 1 && c == m - 1) return 1;
