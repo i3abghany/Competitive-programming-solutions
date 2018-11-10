@@ -4,17 +4,7 @@ typedef long long ll;
 
 using namespace std;
 
-template <typename T>
-inline void removeDups(vector<T>& a) {
-    auto end_unique = std::end(a);
-    for(auto iter = std::begin(a); iter != end_unique; ++iter) {
-        end_unique = std::remove(iter+1, end_unique, *iter) ;
-    }
-    a.erase(end_unique, std::end(a));
-}
-
 map<char, char> mp;
-
 
 bool is_palindrome(string s) {
     for(int i = 0; i < s.length() / 2; i++) {
