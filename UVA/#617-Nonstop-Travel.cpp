@@ -17,7 +17,7 @@ int main() {
         for (int i = 0; i < n; i++) {
             cin >> L >> G >> Y >> R;
             traffic.push_back({{L, G},
-                               {Y, R}});
+                               {Y, R}}); 
         }
         for (int speed = 30; speed <= 60; speed++) {
             bool passes = 1;
