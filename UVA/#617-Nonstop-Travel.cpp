@@ -24,8 +24,8 @@ int main() {
             for (auto span : traffic) {
                 double daur = span.first.first * 1.0 / speed * 3600.0;
                 double traffic_daur = span.first.second + span.second.first + span.second.second;
-                passes &= (fmod(daur, traffic_daur) <= (span.first.second + span.second.first) ||
-                           fabs(fmod(daur, traffic_daur) - span.first.second + span.second.first) < 1e-7);
+                passes &= (fmod(daur, (int)traffic_daur) <= (span.first.second + span.second.first) ||
+                           fabs(fmod(daur, (int)traffic_daur) - span.first.second + span.second.first) < 1e-7);
             }
             if (passes) mp[speed] = 1;
         }
