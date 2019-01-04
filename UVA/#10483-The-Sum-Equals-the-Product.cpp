@@ -1,4 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <utility>
+#include <algorithm>
+
 using namespace std;
 
 using ll = long long;
@@ -19,7 +24,7 @@ int main()
     int a, b, c;
     vector<S> ans;
     for(int i = 1; 3*i <= 25600; i++) {
-        for(int j = i; i + j + j <= 25600; j++) {
+        for(int j = i; j <= 25600; j++) {
             ll p = (ll)i*j;
             ll s = i+j;
             if(p <= 10000) continue;
@@ -27,9 +32,20 @@ int main()
             s += c;
             if(s > 25600 || c < j) continue;
             if(i + j + c == (ll)i*j*c/10000) {
-            	ans.push_back(S(s,i,j,c));
-            } 
-        }    
+                bool f = true;
+                for(auto x : ans) {
+                    if(s == x.s) {
+                        long long arr[3] = {x.a, x.b, x.c};
+                        sort(arr, arr+3);
+                        long long arr2[3] = {i, j, c};
+                        sort(arr2, arr2+3);
+                        for(int k = 0; k < 3; k++)
+                            f &= (arr[k] != arr2[k]);
+                    }
+                }
+                if(f) ans.push_back(S(s,i,j,c));
+            }
+        }
     }
     sort(ans.begin(), ans.end());
     int x, y, z, m;
