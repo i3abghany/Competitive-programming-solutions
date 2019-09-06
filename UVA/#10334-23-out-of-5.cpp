@@ -1,7 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <string>
-#include <cmath>
 #include <algorithm>
 
 std::vector<int> p(5);
