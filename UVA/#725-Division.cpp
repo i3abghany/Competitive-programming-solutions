@@ -17,9 +17,6 @@ bool check(int a, int b) {
 constexpr double EPS = std::numeric_limits<double>::epsilon() * 1000000;
 
 int main() {
-
-	freopen("inp.txt", "r", stdin);
-	freopen("out.txt", "w", stdout);
     int Nn;
     std::vector<int> Ns;
     while(std::cin >> Nn && Nn != 0) Ns.push_back(Nn);
