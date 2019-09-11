@@ -1,13 +1,8 @@
 #include <iostream>
 #include <vector>
+
 int main() {
-
-    freopen("inp.txt", "r", stdin);
-    freopen("out.txt", "w", stdout);
-
     int n, q; std::cin >> n >> q;
-
-
 
     std::vector<int> a(n + 1, 0);
     std::vector<int> b(n + 1, 0);
