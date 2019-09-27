@@ -1,53 +1,47 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <memory.h>
 
-using namespace std;
+int ans = 0;
+int w, n;
 
-char grid[105][105];
-int dp[200][200];
-int n, m;
-void dance() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(NULL); cout.tie(NULL);
-}
+std::vector<std::vector<int>> mp;
+int dp[1000][1000];
 
 bool valid(int r, int c) {
-    if(r >= n || c >= m || r < 0 || c < 0)  return false;
-    return true;
+    return r < w && r >= 0 && c < n && c >= 0
+           && mp[r][c] != -1;
 }
 
-int solve(int r, int c) {
-    if(grid[r][c] == 'x') return 0;
-    if(!valid(r, c)) {
-//        cout << r << " " << c << " are not valid" << endl;
-        return 0;
-    }
-    if(r == n - 1 && c == m - 1) return 1;
-    if(dp[r][c] != -1) return dp[r][c];
-    return dp[r][c] = solve(r, c + 1) + solve(r + 1, c);
+int sol(int r, int c) {
+    if (!valid(r, c)) return 0;
+    if (dp[r][c] != -1) return dp[r][c];
+    if (r == w - 1 && c == n - 1) return 1;
+    return dp[r][c] = sol(r + 1, c) + sol(r, c + 1);
 }
 
 int main() {
-    dance();
-    int t, x, y, C = 0;
-    string lin;
-    cin >> t;
-    while(t--) {
-        if(C++) cout << endl;
-        cin >> n >> m;
-        memset(dp, -1, sizeof dp);
-        for (int i = 0; i < n; ++i)
-            for (int j = 0; j < m; ++j)
-                grid[i][j] = '.';
-            getline(cin, lin);
-        for(int i = 0; i < n; i++) {
-            getline(cin, lin);
-            stringstream c(lin);
-            c >> x;
-            while (c >> y) grid[x - 1][y - 1] = 'x';
+    int tc; std::cin >> tc;
+    while(tc--) {
+        std::cin.get();
+        std::cin >> w >> n;
+        mp.clear();
+        mp.resize(w, std::vector<int>(n, 1)); // 1 means safe.
+        memset(dp, -1, sizeof(dp));
+        for(int i = 0; i < w; i++) {
+            int curr_street;
+            std::cin >> curr_street;
+            --curr_street;
+            std::string s; std::getline(std::cin, s);
+            std::istringstream ss(s);
+            int x;
+            while(ss >> x) {
+                --x;
+                mp[curr_street][x] = -1;
+            }
         }
-        cout << solve(0, 0) << endl;
+        std::cout << sol(0, 0) << '\n';
+        if(tc) std::cout << '\n';
     }
-
-
     return 0;
 }
