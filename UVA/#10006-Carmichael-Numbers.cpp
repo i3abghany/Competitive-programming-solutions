@@ -35,7 +35,7 @@ int main() {
             std::cout << "The number " << n << " is a Carmichael number.\n";
         }
         else {
-            std::cout << n << " is normal.\n");
+            std::cout << n << " is normal.\n";
         }
     }
     return 0;
