@@ -6,7 +6,7 @@ std::vector<int> ser;
 int k;
 
 // max mod is arbitrarily chosen is there are no boundaries specified by the problem.
-constexpr int maxn = 101, max_mod = 20000;
+constexpr int maxn = 101, max_mod = 100000;
 int dp[maxn][max_mod];
 
 int fix(int a, int b) {
@@ -29,7 +29,7 @@ int main() {
         std::cin >> N >> k;
         ser.resize(N);
         for (int &a : ser) std::cin >> a;
-        std::cout << (sol(1, ser[0]) ? "Divisible" : "Not divisible") << '\n';
+        std::cout << (sol(1, fix(ser[0], 0)) ? "Divisible" : "Not divisible") << '\n';
     }
     return 0;
 }
