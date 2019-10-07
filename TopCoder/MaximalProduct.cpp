@@ -13,8 +13,7 @@ public:
 
 private:
     long long maximalProductUtil(int idx, int k, int rem) {
-        if (idx == k && rem == 0) return 1;
-        if (idx == k) return 0;
+        if (idx == k) return 1;
 
         long long int &ret = dp[idx][rem];
 
@@ -23,14 +22,10 @@ private:
         ret = 0;
 
         for (int i = 1; i <= rem; i++) {
+            if(idx == k - 1 && rem - i != 0) continue;
             ret = std::max(ret, i * maximalProductUtil(idx + 1, k, rem - i));
         }
 
         return ret;
     }
 };
-
-int main() {
-    MaximalProduct s;
-    std::cout << s.maximalProduct(10, 3);
-}
