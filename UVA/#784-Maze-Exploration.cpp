@@ -1,65 +1,50 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 
 
 std::vector<std::string> mp;
 
-bool valid(int i, int j) {
-    if(i < 0 || j < 0) return false;
-    if(i >= mp.size()) return false;
-    if(j >= mp[i].length()) return false;
-    if(mp[i][j] != ' ' && mp[i][j] != '*') return false;
-    return true;
-}
+void dfs(int r, int c) {
+    if(mp[r][c] != ' ' && mp[r][c] != '*') return;
+    if(r >= mp.size() || r < 0 || c >= mp[r].size() || c < 0) return;
 
-void dfs(int i, int j) {
-    if(!valid(i, j)) {
-        return;
-    }
-    mp[i][j] = '#';
-
-    dfs(i + 1, j);
-    dfs(i, j + 1);
-    dfs(i - 1, j);
-    dfs(i, j - 1);
+    mp[r][c] = '#';
+    dfs(r + 1, c), dfs(r - 1, c), dfs(r, c + 1), dfs(r, c - 1);
 }
 
 int main() {
-
-    int tc; std::cin >> tc;
+    int tc;
+    scanf("%d", &tc);
     bool fr = true;
-    while(tc--) {
-        mp.clear();
+    while (tc--) {
+        int r, c;
+        r = c = std::numeric_limits<int>::max();
         if(fr) {
-            std::cin.ignore();
             fr = false;
+            std::cin.ignore();
         }
-        int iq = 0;
-        std::string line; std::getline(std::cin, line);
-        mp.push_back(line);
-        while(mp[iq][0] != '_') {
-            std::getline(std::cin, line);
-            mp.push_back(line);
-            iq++;
-        }
-        mp.pop_back();
-        std::pair<int, int> idx;
-        for(int i = 0; i < mp.size(); i++) {
-            for(int j = 0; j < mp[i].length(); j++) {
-                if(mp[i][j] == '*') {
-                    idx.first = i, idx.second = j;
-                    goto brk;
+        mp.clear();
+        std::string s;
+        while (std::getline(std::cin, s) && s[0] != '_') {
+            mp.push_back(s);
+            if (r != std::numeric_limits<int>::max()) continue;
+            for (int i = 0; i < s.size(); i++) {
+                if (mp.back()[i] == '*') {
+                    r = mp.size() - 1;
+                    c = i;
+                    break;
                 }
             }
         }
-        brk: dfs(idx.first, idx.second);
-        for(int i = 0; i < mp.size(); ++i) {
-            for(int j = 0; j < mp[i].length(); ++j) {
-                std::cout << mp[i][j];
+        dfs(r, c);
+        for (auto &lin : mp) {
+            for (auto &t : lin) {
+                std::cout << t;
             }
-            std::cout << '\n';
+            std::cout << std::endl;
         }
-        std::cout << line;
-        if(tc) std::cout << '\n';
+        std::cout << s;
+        if(tc) std::cout << std::endl;
     }
 }
