@@ -20,8 +20,6 @@ void dfs(int node) {
 }
 
 int main() {
-    freopen("inp.txt", "r", stdin);
-    freopen("out.txt", "w", stdout);
     int N, m;
     std::cin >> N >> m;
 
